@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Datos de Agente Secreto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 50px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="procesar_datos.php">
+        <h2>Ingresar Datos de Agente Secreto</h2>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="agente_id">Agente ID:</label><br>
+        <input type="text" id="agente_id" name="agente_id" required><br>
+
+        <label for="departamento_id">Departamento ID:</label><br>
+        <input type="text" id="departamento_id" name="departamento_id" required><br>
+
+        <label for="num_misiones">Número de Misiones:</label><br>
+        <input type="number" id="num_misiones" name="num_misiones" required><br>
+
+        <label for="descripcion_mision">Descripción de la Nueva Misión:</label><br>
+        <textarea id="descripcion_mision" name="descripcion_mision" rows="4" required></textarea><br>
+
+        <!-- Campo oculto para evitar ataques CSRF -->
+        <input type="hidden" name="token" value="<?php echo bin2hex(random_bytes(32)); ?>">
+
+        <input type="submit" value="Enviar Datos">
+    </form>
+</body>
+</html>
